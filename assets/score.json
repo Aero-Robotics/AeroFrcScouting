@@ -1,0 +1,62 @@
+{
+    "ACTIVATION BONUS": {
+      "award": "A total of at least 26 CHARGING STATION points earned in AUTO and/or ENDGAME.",
+      "finalMatch": "1 Ranking Point"
+    },
+    "To connect": {
+      "award": "Completing a MATCH with the same number of MATCH points as your opponent.",
+      "finalMatch": "1 Ranking Point"
+    },
+    "MOBILITY": {
+      "OTO": 3,
+      "award": "Any ROBOT that completely leaves its BUMPERS COLLECTION at any point during the AUTO"
+    },
+    "Earning": {
+      "award": "Completing a MATCH with more MATCH points than your opponent.",
+      "finalMatch": "2 Ranking Points"
+    },
+    "GAME PIECES": {
+      "award1": {
+        "OTO": 3,
+        "award": "scored on a bottom ROW",
+        "teleop": 2
+      },
+      "award2": {
+        "OTO": 4,
+        "award": "scored in the middle ROW",
+        "teleop": 3
+      },
+      "award3": {
+        "OTO": 6,
+        "award": "scored in the next LINE",
+        "teleop": 5
+      }
+    },
+    "PARK": {
+      "award": "Any ROBOT whose BUMPERS are entirely within its COMMUNITY but do not meet the INSTALLED criteria.",
+      "teleop": 2
+    },
+    "SUSTAINABILITY BONUS": {
+      "award": "At least 5 LINKS popped up.",
+      "qualified": "1 Ranking Point"
+    },
+    "PLACED AND ENGAGED": {
+      "OTO": 12,
+      "award":  "Each ROBOT (max. 1 ROBOT in AUTO mode)",
+      "teleop": 10
+    },
+    "PLACED AND NOT ENGAGED": {
+      "OTO": 8,
+      "award": "Each ROBOT (max. 1 ROBOT in AUTO mode)",
+      "teleop": 6
+    },
+    "connection": {
+      "award": "3 adjacent NODES in a ROW contain rated GAME PIECES.",
+      "teleop": 5
+    },
+    "COOPERATION BONUS": {
+      "award": "At least 3 GAME PIECES scored on each ALLIANCE'S COOPERATIVE GRID",
+      "finalMatch": "SUSTAINABILITY BONUS threshold reduced to 4 LINKS for both ALLIANCES "
+    }
+  }
+ 
