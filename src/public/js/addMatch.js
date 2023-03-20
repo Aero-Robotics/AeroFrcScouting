@@ -196,7 +196,7 @@ $("#mySelect1").change(function () {
 });
 
 // JSON dosyasını oku
-const data = fs.readFileSync("./assets/teams_with_flag.json");
+const data = fs.readFileSync("../img/teams_with_flag.json");
 const veriler = JSON.parse(data);
 
 // Seçim öğesine verileri yükle
