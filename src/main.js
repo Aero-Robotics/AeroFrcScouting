@@ -36,7 +36,7 @@ app.on('ready', () => {
         maximizable: false,
     });;
 
-    Login.loadFile('.\\src\\Login.html');
+    Login.loadFile('./src/public/views/Login.html');
 
     ipcMain.on("goBackSign", () => {
         SignUp.close();
@@ -61,7 +61,7 @@ app.on('ready', () => {
              },*/
             maximizable: false,
         });
-        Login.loadFile('.\\src\\Login.html');
+        Login.loadFile('./src/public/views/Login.html');
     })
 
     ipcMain.on("goBackForgetPass", () => {
@@ -87,7 +87,7 @@ app.on('ready', () => {
              },*/
             maximizable: false,
         });
-        Login.loadFile('.\\src\\Login.html');
+        Login.loadFile('./src/public/views/Login.html');
     })
 
 
@@ -114,7 +114,7 @@ app.on('ready', () => {
              },*/
             maximizable: false,
         });
-        MainPage.loadFile('.\\src\\MainPage.html');
+        MainPage.loadFile('./src/public/views/MainPage.html');
     })
 
     ipcMain.on("nextAddMatch", (err,data) =>{
@@ -139,7 +139,7 @@ app.on('ready', () => {
         Secondallience = data.second;
         addMatchPage2.maximize(true);
         addMatchPage.close();
-        addMatchPage2.loadFile('.\\src\\addMatch2.html');
+        addMatchPage2.loadFile('./src/public/views/addMatch2.html');
     })
 
     ipcMain.on("Forgetpass", () => {
@@ -164,7 +164,7 @@ app.on('ready', () => {
             maximizable: false,
         });
         Login.close();
-        Forgetpass.loadFile('.\\src\\ForgetPassword.html');
+        Forgetpass.loadFile('./src/public/views/ForgetPassword.html');
     })
 
     ipcMain.on("SignUp", (err) => {
@@ -184,7 +184,7 @@ app.on('ready', () => {
             title: 'Aero Frc Scouting',
         });
 
-        SignUp.loadFile('.\\src\\SignUp.html');
+        SignUp.loadFile('./src/public/views/SignUp.html');
         Login.close();
     });
 
@@ -208,7 +208,7 @@ app.on('ready', () => {
         Email = data.Email;
        Password = data.Password;
     
-        MainPage.loadFile('.\\src\\MainPage.html');
+        MainPage.loadFile('./src/public/views/MainPage.html');
         Login.close();
 
     });
@@ -244,7 +244,7 @@ app.on('ready', () => {
              },*/
             maximizable: false,
         });
-        MainPage.loadFile('.\\src\\MainPage.html');
+        MainPage.loadFile('./src/public/views/MainPage.html');
         ManageUser.close();
       })
 
@@ -271,7 +271,7 @@ app.on('ready', () => {
              },*/
             maximizable: false,
         });
-        Login.loadFile('.\\src\\Login.html');
+        Login.loadFile('./src/public/views/Login.html');
       })
 
     ipcMain.on("AccountClick", () => {
@@ -298,7 +298,7 @@ app.on('ready', () => {
             maximizable: false,
         });
 
-        ManageUser.loadFile('.\\src\\ManageUser.html');
+        ManageUser.loadFile('./src/public/views/ManageUser.html');
         MainPage.close();
     })
 
@@ -326,7 +326,7 @@ app.on('ready', () => {
             maximizable: false,
         });
 
-        addMatchPage.loadFile('.\\src\\addMatch.html');
+        addMatchPage.loadFile('./src/public/views/addMatch.html');
         MainPage.close();
     })
 
@@ -364,7 +364,7 @@ ipcMain.on("Logout", (err,data) => {
             maximizable: false,
         });;
         
-        Login.loadFile('.\\src\\Login.html');
+        Login.loadFile('./src/public/views/Login.html');
     }
 });
 
