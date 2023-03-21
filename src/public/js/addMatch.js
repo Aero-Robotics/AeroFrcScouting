@@ -12,52 +12,92 @@ const goBackButton = document.getElementById("gobackButton");
 const NextButton = document.getElementById("NextButton");
 
 //jquery kodları
-function create_custom_dropdowns() {
-  $("select").each(function (i, select) {
-    if (!$(this).next().hasClass("dropdown-select")) {
-      $(this).after(
-        '<div class="dropdown-select wide ' +
-          ($(this).attr("class") || "") +
-          '" tabindex="0"><span class="current"></span><div class="list"><ul></ul></div></div>'
-      );
-      var dropdown = $(this).next();
-      var options = $(select).find("option");
-      var selected = $(this).find("option:selected");
-      dropdown
-        .find(".current")
-        .html(selected.data("display-text") || selected.text());
-      options.each(function (j, o) {
-        var display = $(o).data("display-text") || "";
-        dropdown
-          .find("ul")
-          .append(
-            '<li class="option ' +
-              ($(o).is(":selected") ? "selected" : "") +
-              '" data-value="' +
-              $(o).val() +
-              '" data-display-text="' +
-              display +
-              '">' +
-              $(o).text() +
-              "</li>"
+function create_custom_dropdowns(id) {
+  if(id == 1) {
+    $("#mySelect1").each(function (i, select) {
+        if (!$(this).next().hasClass("dropdown-select1")) {
+          $(this).after(
+            '<div class="dropdown-select1 wide ' +
+              ($(this).attr("class") || "") +
+              '" tabindex="0"><span class="current"></span><div class="list"><ul></ul></div></div>'
           );
+          var dropdown = $(this).next();
+          var options = $(select).find("option");
+          var selected = $(this).find("option:selected");
+          dropdown
+            .find(".current")
+            .html(selected.data("display-text") || selected.text());
+          options.each(function (j, o) {
+            var display = $(o).data("display-text") || "";
+            dropdown
+              .find("ul")
+              .append(
+                '<li class="option ' +
+                  ($(o).is(":selected") ? "selected" : "") +
+                  '" data-value="' +
+                  $(o).val() +
+                  '" data-display-text="' +
+                  display +
+                  '">' +
+                  $(o).text() +
+                  "</li>"
+              );
+          });
+        }
       });
-    }
-  });
-
-  $(".dropdown-select ul").before(
-    '<div class="dd-search"><input id="txtSearchValue" autocomplete="off" onkeyup="filter()" class="dd-searchbox" type="text"></div>'
-  );
+    
+      $(".dropdown-select1 ul").before(
+        '<div class="dd-search"><input id="txtSearchValue1" autocomplete="off" onkeyup="filter(1)" class="dd-searchbox" type="text"></div>'
+      );
+      return;
+  } else if(id == 2) {
+    $("#mySelect2").each(function (i, select) {
+        if (!$(this).next().hasClass("dropdown-select2")) {
+          $(this).after(
+            '<div class="dropdown-select2 wide ' +
+              ($(this).attr("class") || "") +
+              '" tabindex="0"><span class="current"></span><div class="list"><ul></ul></div></div>'
+          );
+          var dropdown = $(this).next();
+          var options = $(select).find("option");
+          var selected = $(this).find("option:selected");
+          dropdown
+            .find(".current")
+            .html(selected.data("display-text") || selected.text());
+          options.each(function (j, o) {
+            var display = $(o).data("display-text") || "";
+            dropdown
+              .find("ul")
+              .append(
+                '<li class="option ' +
+                  ($(o).is(":selected") ? "selected" : "") +
+                  '" data-value="' +
+                  $(o).val() +
+                  '" data-display-text="' +
+                  display +
+                  '">' +
+                  $(o).text() +
+                  "</li>"
+              );
+          });
+        }
+      });
+    
+      $(".dropdown-select2 ul").before(
+        '<div class="dd-search"><input id="txtSearchValue2" autocomplete="off" onkeyup="filter(2)" class="dd-searchbox" type="text"></div>'
+      );
+      return;
+  }
 }
 
 // Event listeners
 
 // Open/close
-$(document).on("click", ".dropdown-select", function (event) {
+$(document).on("click", ".dropdown-select1", function (event) {
   if ($(event.target).hasClass("dd-searchbox")) {
     return;
   }
-  $(".dropdown-select").not($(this)).removeClass("open");
+  $(".dropdown-select1").not($(this)).removeClass("open");
   $(this).toggleClass("open");
   if ($(this).hasClass("open")) {
     $(this).find(".option").attr("tabindex", 0);
@@ -68,41 +108,88 @@ $(document).on("click", ".dropdown-select", function (event) {
   }
 });
 
+$(document).on("click", ".dropdown-select2", function (event) {
+    if ($(event.target).hasClass("dd-searchbox")) {
+      return;
+    }
+    $(".dropdown-select2").not($(this)).removeClass("open");
+    $(this).toggleClass("open");
+    if ($(this).hasClass("open")) {
+      $(this).find(".option").attr("tabindex", 0);
+      $(this).find(".selected").focus();
+    } else {
+      $(this).find(".option").removeAttr("tabindex");
+      $(this).focus();
+    }
+  });
+
 // Close when clicking outside
 $(document).on("click", function (event) {
-  if ($(event.target).closest(".dropdown-select").length === 0) {
-    $(".dropdown-select").removeClass("open");
-    $(".dropdown-select .option").removeAttr("tabindex");
+  if ($(event.target).closest(".dropdown-select1").length === 0) {
+    $(".dropdown-select1").removeClass("open");
+    $(".dropdown-select1 .option").removeAttr("tabindex");
   }
   event.stopPropagation();
 });
 
-function filter() {
-  var valThis = $("#txtSearchValue").val();
-  $(".dropdown-select ul > li").each(function () {
-    var text = $(this).text();
-    text.toLowerCase().indexOf(valThis.toLowerCase()) > -1
-      ? $(this).show()
-      : $(this).hide();
+$(document).on("click", function (event) {
+    if ($(event.target).closest(".dropdown-select2").length === 0) {
+      $(".dropdown-select2").removeClass("open");
+      $(".dropdown-select2 .option").removeAttr("tabindex");
+    }
+    event.stopPropagation();
   });
+
+function filter(id) {
+  if(id == 1) {
+    var valThis = $("#txtSearchValue1").val();
+    $(".dropdown-select1 ul > li").each(function () {
+        var text = $(this).text();
+        text.toLowerCase().indexOf(valThis.toLowerCase()) > -1
+        ? $(this).show()
+        : $(this).hide();
+    });
+    return;
+  } else if (id == 2) {
+    var valThis = $("#txtSearchValue2").val();
+    $(".dropdown-select2 ul > li").each(function () {
+        var text = $(this).text();
+        text.toLowerCase().indexOf(valThis.toLowerCase()) > -1
+        ? $(this).show()
+        : $(this).hide();
+    });
+    return;
+  }
 }
 // Search
 
 // Option click
-$(document).on("click", ".dropdown-select .option", function (event) {
+$(document).on("click", ".dropdown-select1 .option", function (event) {
   $(this).closest(".list").find(".selected").removeClass("selected");
   $(this).addClass("selected");
   var text = $(this).data("display-text") || $(this).text();
-  $(this).closest(".dropdown-select").find(".current").text(text);
+  $(this).closest(".dropdown-select1").find(".current").text(text);
   $(this)
-    .closest(".dropdown-select")
+    .closest(".dropdown-select1")
     .prev("select")
     .val($(this).data("value"))
     .trigger("change");
 });
 
+$(document).on("click", ".dropdown-select2 .option", function (event) {
+    $(this).closest(".list").find(".selected").removeClass("selected");
+    $(this).addClass("selected");
+    var text = $(this).data("display-text") || $(this).text();
+    $(this).closest(".dropdown-select2").find(".current").text(text);
+    $(this)
+      .closest(".dropdown-select2")
+      .prev("select")
+      .val($(this).data("value"))
+      .trigger("change");
+  });
+
 // Keyboard events
-$(document).on("keydown", ".dropdown-select", function (event) {
+$(document).on("keydown", ".dropdown-select1", function (event) {
   var focused_option = $(
     $(this).find(".list .option:focus")[0] ||
       $(this).find(".list .option.selected")[0]
@@ -145,8 +232,52 @@ $(document).on("keydown", ".dropdown-select", function (event) {
   }
 });
 
+$(document).on("keydown", ".dropdown-select2", function (event) {
+    var focused_option = $(
+      $(this).find(".list .option:focus")[0] ||
+        $(this).find(".list .option.selected")[0]
+    );
+    // Space or Enter
+    //if (event.keyCode == 32 || event.keyCode == 13) {
+    if (event.keyCode == 13) {
+      if ($(this).hasClass("open")) {
+        focused_option.trigger("click");
+      } else {
+        $(this).trigger("click");
+      }
+      return false;
+      // Down
+    } else if (event.keyCode == 40) {
+      if (!$(this).hasClass("open")) {
+        $(this).trigger("click");
+      } else {
+        focused_option.next().focus();
+      }
+      return false;
+      // Up
+    } else if (event.keyCode == 38) {
+      if (!$(this).hasClass("open")) {
+        $(this).trigger("click");
+      } else {
+        var focused_option = $(
+          $(this).find(".list .option:focus")[0] ||
+            $(this).find(".list .option.selected")[0]
+        );
+        focused_option.prev().focus();
+      }
+      return false;
+      // Esc
+    } else if (event.keyCode == 27) {
+      if ($(this).hasClass("open")) {
+        $(this).trigger("click");
+      }
+      return false;
+    }
+  });
+
 $(document).ready(function () {
-  create_custom_dropdowns();
+  create_custom_dropdowns(1);
+  create_custom_dropdowns(2);
 });
 
 $("#mySelect1").change(function () {
@@ -194,6 +325,19 @@ $("#mySelect1").change(function () {
       });
     }
   }
+});
+
+$("#listFristAllience").on("click", ".button", function () {
+  numberOfFristTeams--; // decrease the count of teams
+  var id = $(this).attr("id");
+  $("#" + id).remove(); // remove the button from DOM
+  firstallience.splice(id - 1, 1); // remove the button's text from the array
+  // find the index of the item to be removed in the array
+  var indexToRemove = firstallience.indexOf($(this).text());
+  if (indexToRemove > -1) {
+    firstallience.splice(indexToRemove, 1); // remove the button's text from the array
+  }
+  console.log(firstallience);
 });
 
 // JSON dosyasını oku
@@ -258,19 +402,6 @@ getData.forEach((veri) => {
   option.appendChild(flagAndNameSpan);
 
   select2.appendChild(option);
-});
-
-$("#listFristAllience").on("click", ".button", function () {
-  numberOfFristTeams--; // decrease the count of teams
-  var id = $(this).attr("id");
-  $("#" + id).remove(); // remove the button from DOM
-  firstallience.splice(id - 1, 1); // remove the button's text from the array
-  // find the index of the item to be removed in the array
-  var indexToRemove = firstallience.indexOf($(this).text());
-  if (indexToRemove > -1) {
-    firstallience.splice(indexToRemove, 1); // remove the button's text from the array
-  }
-  console.log(firstallience);
 });
 
 
