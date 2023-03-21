@@ -1,18 +1,28 @@
 {
   "name": "aerofrcscouting",
   "version": "1.0.0",
-  "description": "",
+  "description": "AeroFrcScouting application by AeroTeam and EfeSorogluu",
+  "icon": "./app.ico",
   "main": "./src/main.js",
+  "build": {
+    "appId": "com.aerofrc.app",
+    "icon": "./app.ico"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder --dir",
+    "dist": "electron-builder",
+    "make": "electron-forge make",
+    "package": "electron-forge package"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^23.0.0"
+    "electron": "^23.0.0",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
+    "electron-forge": "^5.2.4",
     "firebase": "^9.17.1",
     "jquery": "^3.6.3"
   }
