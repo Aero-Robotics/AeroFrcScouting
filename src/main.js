@@ -87,7 +87,7 @@ app.on('ready', () => {
              },*/
             maximizable: false,
         });
-        Login.loadFile('./src/public/views/Login.html');
+        Login.loadFile('');
     })
 
 

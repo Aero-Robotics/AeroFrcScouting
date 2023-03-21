@@ -3,6 +3,7 @@ const electron = require("electron");
 const { ipcRenderer } = electron;
 const $ = require("jquery");
 const fs = require("fs");
+const path = require("path");
 var numberOfFristTeams = 0;
 var numberOfSecondTeams = 0;
 var firstallience = [];
@@ -196,14 +197,14 @@ $("#mySelect1").change(function () {
 });
 
 // JSON dosyasını oku
-const data = fs.readFileSync("../img/teams_with_flag.json");
-const veriler = JSON.parse(data);
+const jsonFile = fs.readFileSync('src/teams_with_flag.json', 'utf-8');
+const getData = JSON.parse(jsonFile);
 
 // Seçim öğesine verileri yükle
 const select = document.getElementById("mySelect1");
 const select2 = document.getElementById("mySelect2");
 
-veriler.forEach((veri) => {
+getData.forEach((veri) => {
   const option = document.createElement("option");
   option.value = veri.teamNumber;
 
@@ -231,7 +232,7 @@ veriler.forEach((veri) => {
   select.appendChild(option);
 });
 
-veriler.forEach((veri) => {
+getData.forEach((veri) => {
   const option = document.createElement("option");
   option.value = veri.teamNumber;
 
