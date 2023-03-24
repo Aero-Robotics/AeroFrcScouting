@@ -1,10 +1,10 @@
 
 # Aero FRC Scouting App
-The application has the ability to encrypt and decrypt the entered text using the aes-256-cbc algorithm, providing you with secure storage for your sensitive information. With the "Save" button, you can easily store your encrypted messages in any desired location, making the application your trusted, personal journal.
+Aero FRC scouting is a user-friendly program that you can use to score the matches in the 2022-2023 season and keep track of these scores. The program was designed completely global. You can select and score about 2500 teams around the world. It is also very easy to score, all you have to do is click on the icons of the tasks done.
 # Features
 
- - This application features encryption and decryption using the AES-256-CBC algorithm.
- - You can save your encrypted text to any location of your choice using the "save" button, making this application a great daily tool for secure storage.
+ - Aero FRC scouting is an online scoring program
+ - You can easily score matches with the user-friendly interface of Aero FRC scouting.
 
 # Preview
 ![d9dd3967-e4c8-4201-9338-d917c82eed2f](https://user-images.githubusercontent.com/121814722/227618989-fb8cad49-834f-4ead-a97e-58d4309d6f72.jpg)
